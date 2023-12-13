@@ -1,0 +1,21 @@
+import yaml
+from openai import OpenAI
+
+with open('transcription_config.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+# Initialize the OpenAI client
+client = OpenAI()
+
+# Open the audio file specified in the YAML file
+audio_file = open(config['transcription_service']['audio_file_path'], "rb")
+
+# Create the transcription
+transcript = client.audio.transcriptions.create(
+  model=config['transcription_service']['model'], 
+  file=audio_file,
+  response_format=config['transcription_service']['output_format']
+)
+
+# Do something with the transcript, like printing it or saving to a file
+print(transcript)
