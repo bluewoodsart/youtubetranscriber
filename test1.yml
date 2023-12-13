@@ -1,0 +1,12 @@
+video_download:
+  url: "https://www.youtube.com/shorts/PdSLPpF9R9U"
+
+audio_extraction:
+  input_video_format: ".mp4"
+  output_audio_format: ".mp3"
+  ffmpeg_command: "ffmpeg -i input_video_file -q:a 0 -map a output_audio_file"
+
+transcription_service:
+  provider: "OpenAI"
+  model: "whisper-1"
+  api_key: "YOUR_OPENAI_KEY"
